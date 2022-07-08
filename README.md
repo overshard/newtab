@@ -1,11 +1,9 @@
 # New Tab
 
-
-![Screenshot](screenshot.webp)
-
-
 A clean new tab page extension for Chrome made by Isaac Bythewood, you can grab
 it and customize it yourself.
+
+![Screenshot](screenshot.webp)
 
 
 ## Installation
