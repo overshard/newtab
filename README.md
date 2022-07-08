@@ -33,3 +33,10 @@ else swap out the AccuWeather link in `newtab.js`. My location looks like this:
 
 You can just search for your location on the AccuWeather website and copy the
 url of the resulting page.
+
+
+## Credits
+
+The current `background.webp` image credits go to
+[Valentin Petrov](https://www.artstation.com/valentinpetrov). You can find this
+exact image on [ArtStation](https://www.artstation.com/artwork/wnD16).
