@@ -1,24 +1,37 @@
 # New Tab
 
-A clean tab page made by Isaac Bythewood, you can grab it and customize it
-yourself at [https://github.com/overshard/newtab](https://github.com/overshard/newtab).
+
+![Screenshot](screenshot.webp)
+
+
+A clean new tab page extension for Chrome made by Isaac Bythewood, you can grab
+it and customize it yourself.
 
 
 ## Installation
 
-Download the files from GitHub or clone the repository.
+Download the files:
+
+    https://github.com/overshard/newtab/archive/refs/heads/master.zip
+
+Or clone the repository:
 
     git clone https://github.com/overshard/newtab.git
 
-Go to [chrome://extensions](chrome://extensions) in you browser and enable
-`Developer mode` in the top right. Then click `Load unpacked` and select the
-folder your just cloned or downloaded.
+- Unpack the files on your system somewhere
+- Go to [chrome://extensions](chrome://extensions) in you browser
+- Enable `Developer mode` on the top right
+- Click `Load unpacked` and select the folder you unpacked the files to
 
 
 ## Customization
 
-The easiest customization is swapping out the `background.webp` image. The
-weather is based on my location in Morganton, NC so if you want somewhere else
-swap out the AccuWeather link in `newtab.js`. My location looks like this:
+The easiest customization is swapping out the `background.webp` image.
+
+The weather is based on my location in Morganton, NC so if you want somewhere
+else swap out the AccuWeather link in `newtab.js`. My location looks like this:
 
     https://www.accuweather.com/en/us/morganton/28655/weather-forecast/334823
+
+You can just search for your location on the AccuWeather website and copy the
+url of the resulting page.
