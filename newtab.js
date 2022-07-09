@@ -55,7 +55,7 @@ const createBookmarksList = (bookmarks) => {
   return bookmarksList;
 }
 
-createBookmarksEditLink = () => {
+const createBookmarksEditLink = () => {
   const bookmarksList = document.createElement('ul');
   const bookmarksListItem = document.createElement('li');
   const bookmarksEditItemLink = document.createElement('a');
@@ -107,6 +107,9 @@ const updateTime = () => {
   let hours = currentTime.getHours();
   if (hours > 12) {
     hours -= 12;
+  }
+  if (hours === 0) {
+    hours = 12;
   }
 
   let minutes = currentTime.getMinutes();
@@ -215,3 +218,50 @@ const getCurrentWeather = () => {
 
 getCurrentWeather();
 setInterval(getCurrentWeather, 1000 * 60 * 60);
+
+
+/**
+ * Get the top posts from Hacker News to display on the page.
+ */
+
+const currentPostsElement = document.getElementById('currentPosts');
+
+const getTopPosts = () => {
+  const currentPostsList = document.createElement('ul');
+  currentPostsElement.innerHTML = '';
+
+  fetch('https://hacker-news.firebaseio.com/v0/topstories.json')
+    .then(response => response.json())
+    .then(json => {
+      const topPosts = json.slice(0, 5);
+      const topPostsPromises = topPosts.map(id => {
+        return fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
+          .then(response => response.json())
+          .then(json => {
+            return json;
+          });
+      });
+      return Promise.all(topPostsPromises);
+    })
+    .then(topPosts => {
+      topPosts.forEach(post => {
+        const postElement = document.createElement('li');
+        const postLink = document.createElement('a');
+        postLink.href = `https://news.ycombinator.com/item?id=${post.id}`;
+
+        const postExtras = document.createElement('span');
+        postExtras.innerHTML = `<span>${post.score}</span>`;
+        postLink.appendChild(postExtras);
+
+        postLink.innerHTML += post.title;
+
+        postElement.appendChild(postLink);
+        currentPostsList.appendChild(postElement);
+      });
+    });
+
+    currentPostsElement.innerHTML = '';
+    currentPostsElement.appendChild(currentPostsList);
+}
+
+getTopPosts();
