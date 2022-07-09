@@ -208,9 +208,10 @@ const createBookmarksList = (bookmarks) => {
       const bookmarkIcon = document.createElement("img");
       bookmarkIcon.width = "14";
       bookmarkIcon.height = "14";
-      let faviconUrl = "https://external-content.duckduckgo.com/ip3/";
-      faviconUrl += bookmark.url.split("/")[2] + ".ico";
+      let faviconUrl = new URL(bookmark.url).origin;
+      faviconUrl += "/favicon.ico";
       bookmarkIcon.src = faviconUrl;
+
       bookmarkLink.href = bookmark.url;
       bookmarkLink.appendChild(bookmarkIcon);
     } else {
