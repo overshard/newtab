@@ -1,4 +1,4 @@
-# New tab
+# New Tab
 
 A clean new tab page extension for Chrome made by Isaac Bythewood, you can grab
 it and customize it yourself.

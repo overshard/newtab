@@ -1,17 +1,10 @@
 {
-  "name": "New tab",
-  "description": "A clean tab page made by Isaac Bythewood, you can grab it and customize it yourself at `https://github.com/overshard/newtab`.",
+  "name": "New Tab",
+  "description": "A clean tab page made by Isaac Bythewood.",
+  "homepage_url": "https://github.com/overshard/newtab",
   "version": "1.0",
   "manifest_version": 3,
-  "chrome_url_overrides" : {
-    "newtab": "newtab.html"
-  },
-  "permissions": [
-    "storage",
-    "bookmarks",
-    "tabs"
-  ],
-  "host_permissions": [
-    "*://*.accuweather.com/*"
-  ]
+  "chrome_url_overrides": { "newtab": "newtab.html" },
+  "permissions": ["storage", "bookmarks", "tabs"],
+  "host_permissions": ["https://www.accuweather.com/*"]
 }
