@@ -5,6 +5,7 @@
 const currentBookmarksElement = document.getElementById('currentBookmarks');
 
 const faviconFolder = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white" viewBox="0 0 16 16"><path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/></svg>';
+const faviconEdit = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="white" viewBox="0 0 16 16"><path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/></svg>';
 
 const getBookmarks = () => {
   try {
@@ -54,12 +55,38 @@ const createBookmarksList = (bookmarks) => {
   return bookmarksList;
 }
 
+createBookmarksEditLink = () => {
+  const bookmarksList = document.createElement('ul');
+  const bookmarksListItem = document.createElement('li');
+  const bookmarksEditItemLink = document.createElement('a');
+  const bookmarksEditLinkIcon = document.createElement('span');
+
+  bookmarksEditItemLink.target = '_blank';
+  bookmarksEditItemLink.href = 'chrome://bookmarks';
+  bookmarksEditItemLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    chrome.tabs.create({ url: 'chrome://bookmarks' });
+  });
+
+
+  bookmarksEditLinkIcon.innerHTML = faviconEdit;
+  bookmarksEditItemLink.appendChild(bookmarksEditLinkIcon);
+
+  bookmarksEditItemLink.innerHTML += 'Edit';
+
+  bookmarksListItem.appendChild(bookmarksEditItemLink);
+  bookmarksList.appendChild(bookmarksListItem);
+
+  return bookmarksList;
+}
+
+
 const updateCurrentBookmarks = () => {
   try {
     getBookmarks().then(bookmarks => {
       currentBookmarksElement.innerHTML = '';
-      const bookmarksList = createBookmarksList(bookmarks);
-      currentBookmarksElement.appendChild(bookmarksList);
+      currentBookmarksElement.appendChild(createBookmarksList(bookmarks));
+      currentBookmarksElement.appendChild(createBookmarksEditLink());
     });
   } catch (e) {
     console.log(e);
@@ -91,9 +118,9 @@ const updateTime = () => {
   currentTimeElement.innerHTML = timeString;
 }
 
+updateTime();
 setInterval(updateTime, 1000);
 
-updateTime();
 
 /**
  * Set the current date on the page.
@@ -138,6 +165,8 @@ const updateDate = () => {
 }
 
 updateDate();
+setInterval(updateDate, 1000);
+
 
 /**
  * Set the current weather on the page by pulling it from AccuWeather.
@@ -185,3 +214,4 @@ const getCurrentWeather = () => {
 };
 
 getCurrentWeather();
+setInterval(getCurrentWeather, 1000 * 60 * 60);

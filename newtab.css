@@ -65,12 +65,13 @@ body {
   right: 0;
   color: rgb(255, 255, 255);
   padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 #currentBookmarks > ul {
   display: flex;
   align-items: center;
-  width: 100%;
   height: 100%;
   list-style: none;
   margin: 0;
@@ -87,15 +88,24 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
   cursor: pointer;
   position: relative;
+  white-space: nowrap;
+}
+
+#currentBookmarks > ul > li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#currentBookmarks > ul:last-child > li {
+  background-color: rgba(10, 160, 60, 0.4);
+}
+
+#currentBookmarks > ul:last-child > li:hover {
+  background-color: rgba(10, 160, 60, 0.6);
 }
 
 #currentBookmarks > ul > li > a > span {
   display: flex;
   align-items: center;
-}
-
-#currentBookmarks > ul > li:hover {
-  background-color: rgba(255, 255, 255, 0.2);
 }
 
 #currentBookmarks > ul > li > a {
