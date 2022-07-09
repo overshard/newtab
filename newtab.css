@@ -76,7 +76,7 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 #currentBookmarks > ul > li {
