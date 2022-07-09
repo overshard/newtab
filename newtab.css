@@ -1,3 +1,7 @@
+/* ---------------------------------------------------------------------------*/
+/* 00 Global                                                                  */
+/* ---------------------------------------------------------------------------*/
+
 body {
   background-image: url(background.webp);
   background-repeat: no-repeat;
@@ -24,17 +28,32 @@ body {
   z-index: -1;
 }
 
+
+/* ---------------------------------------------------------------------------*/
+/* 01 Time                                                                    */
+/* ---------------------------------------------------------------------------*/
+
 #currentTime {
   font-size: 20em;
   font-weight: lighter;
   font-variant-numeric: tabular-nums;
 }
 
+
+/* ---------------------------------------------------------------------------*/
+/* 02 Date                                                                    */
+/* ---------------------------------------------------------------------------*/
+
 #currentDate {
   font-size: 5rem;
   font-weight: lighter;
   color: #b8b8b8;
 }
+
+
+/* ---------------------------------------------------------------------------*/
+/* 03 Weather                                                                 */
+/* ---------------------------------------------------------------------------*/
 
 #currentWeather {
   position: fixed;
@@ -57,99 +76,10 @@ body {
   color: #b8b8b8;
 }
 
-#currentBookmarks {
-  background-color: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  color: rgb(255, 255, 255);
-  padding: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-}
 
-#currentBookmarks > ul {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 0.5rem;
-}
-
-#currentBookmarks > ul > li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-  position: relative;
-  white-space: nowrap;
-}
-
-#currentBookmarks > ul > li:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-#currentBookmarks > ul:last-child > li {
-  background-color: rgba(10, 160, 60, 0.4);
-}
-
-#currentBookmarks > ul:last-child > li:hover {
-  background-color: rgba(10, 160, 60, 0.6);
-}
-
-#currentBookmarks > ul > li > a > span {
-  display: flex;
-  align-items: center;
-}
-
-#currentBookmarks > ul > li > a {
-  color: white;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-#currentBookmarks > ul > li > ul {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 0.5rem 0;
-  border-radius: 0.25rem;
-  z-index: 1;
-}
-
-#currentBookmarks > ul > li:hover > ul {
-  display: block;
-  list-style: none;
-  margin: 0;
-}
-
-#currentBookmarks > ul > li > ul > li {
-  padding: 0.25rem 0.5rem;
-  white-space: nowrap;
-}
-
-#currentBookmarks > ul > li > ul > li:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-#currentBookmarks > ul > li > ul > li > a {
-  color: white;
-  text-decoration: none;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
+/* ---------------------------------------------------------------------------*/
+/* 04 Posts                                                                   */
+/* ---------------------------------------------------------------------------*/
 
 #currentPosts {
   position: fixed;
@@ -201,4 +131,103 @@ body {
   font-size: 0.8em;
   color: #b8b8b8;
   margin-right: 0.5rem;
+}
+
+
+/* ---------------------------------------------------------------------------*/
+/* 05 Bookmarks                                                               */
+/* ---------------------------------------------------------------------------*/
+
+#currentBookmarks {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: rgb(255, 255, 255);
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+#currentBookmarks > ul {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.5rem;
+}
+
+#currentBookmarks > ul > li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+}
+
+#currentBookmarks > ul > li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#currentBookmarks > ul:last-child > li {
+  background-color: rgba(10, 160, 60, 0.4);
+}
+
+#currentBookmarks > ul:last-child > li:hover {
+  background-color: rgba(10, 160, 60, 0.6);
+}
+
+#currentBookmarks > ul > li > a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#currentBookmarks > ul > li > a > span {
+  display: flex;
+  align-items: center;
+}
+
+#currentBookmarks > ul > li > ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0;
+  border-radius: 0.25rem;
+  z-index: 1;
+}
+
+#currentBookmarks > ul > li:hover > ul {
+  display: block;
+  list-style: none;
+  margin: 0;
+}
+
+#currentBookmarks > ul > li > ul > li {
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+}
+
+#currentBookmarks > ul > li > ul > li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#currentBookmarks > ul > li > ul > li > a {
+  color: white;
+  text-decoration: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
