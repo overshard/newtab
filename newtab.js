@@ -182,6 +182,7 @@ const faviconEdit = `\
 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="white" viewBox="0 0 16 16">
   <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
 </svg>`;
+const faviconDocument = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgZmlsbD0id2hpdGUiIHZpZXdCb3g9IjAgMCAxNiAxNiI+CiAgPHBhdGggZD0iTTkuMjkzIDBINGEyIDIgMCAwIDAtMiAydjEyYTIgMiAwIDAgMCAyIDJoOGEyIDIgMCAwIDAgMi0yVjQuNzA3QTEgMSAwIDAgMCAxMy43MDcgNEwxMCAuMjkzQTEgMSAwIDAgMCA5LjI5MyAwek05LjUgMy41di0ybDMgM2gtMmExIDEgMCAwIDEtMS0xek00LjUgOWEuNS41IDAgMCAxIDAtMWg3YS41LjUgMCAwIDEgMCAxaC03ek00IDEwLjVhLjUuNSAwIDAgMSAuNS0uNWg3YS41LjUgMCAwIDEgMCAxaC03YS41LjUgMCAwIDEtLjUtLjV6bS41IDIuNWEuNS41IDAgMCAxIDAtMWg0YS41LjUgMCAwIDEgMCAxaC00eiIvPgo8L3N2Zz4K`;
 
 const getBookmarks = () => {
   try {
@@ -198,6 +199,20 @@ const getBookmarks = () => {
   }
 };
 
+const addFavicon = (el, url) => {
+  const image = new Image();
+  image.src = url;
+  image.width = 14;
+  image.height = 14;
+  image.onload = () => {
+    el.prepend(image);
+  };
+  image.onerror = () => {
+    image.src = faviconDocument;
+    el.prepend(image);
+  };
+};
+
 const createBookmarksList = (bookmarks) => {
   const bookmarksList = document.createElement("ul");
   bookmarks.forEach((bookmark) => {
@@ -205,15 +220,9 @@ const createBookmarksList = (bookmarks) => {
     const bookmarkLink = document.createElement("a");
 
     if (bookmark.url) {
-      const bookmarkIcon = document.createElement("img");
-      bookmarkIcon.width = "14";
-      bookmarkIcon.height = "14";
-      let faviconUrl = new URL(bookmark.url).origin;
-      faviconUrl += "/favicon.ico";
-      bookmarkIcon.src = faviconUrl;
-
+      const faviconUrl = new URL(bookmark.url).origin + "/favicon.ico";
+      addFavicon(bookmarkLink, faviconUrl);
       bookmarkLink.href = bookmark.url;
-      bookmarkLink.appendChild(bookmarkIcon);
     } else {
       bookmarkLink.href = "#";
       const folderIcon = document.createElement("span");
