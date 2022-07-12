@@ -38,5 +38,4 @@ url of the resulting page.
 ## Credits
 
 The current `background.webp` image credits go to
-[Valentin Petrov](https://www.artstation.com/valentinpetrov). You can find this
-exact image on [ArtStation](https://www.artstation.com/artwork/wnD16).
+[NASA's Webb](https://webbtelescope.org/contents/news-releases/2022/news-2022-031).
